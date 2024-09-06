@@ -43,5 +43,5 @@ Redis требуется для хранения состояния вашего
 Склонируйте репозиторий с GitHub:
 
 ```bash
-git clone https://github.com/yourusername/pdf-neuro-bot.git
+git clone https://github.com/Starlight19973/pdf-neuro-bot.git
 cd pdf-neuro-bot
