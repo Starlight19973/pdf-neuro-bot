@@ -1,4 +1,5 @@
 import logging
+import os
 from aiogram import types, Router, F
 from aiogram.fsm.context import FSMContext
 from aiogram.filters import CommandStart, StateFilter, Command
@@ -11,11 +12,12 @@ import requests
 import io
 import pdfplumber
 
+
 # Создаем Router для регистрации обработчиков
 router = Router()
 
 
-ADMINS = [269589230]  # Список ID администраторов
+ADMINS = list(map(int, os.getenv("ADMINS").split(',')))  # Список ID администраторов
 
 
 @router.message(CommandStart())
