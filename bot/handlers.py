@@ -13,7 +13,7 @@ import io
 import pdfplumber
 
 
-# Создаем Router для регистрации обработчиков
+
 router = Router()
 
 
@@ -63,11 +63,8 @@ async def handle_document_upload(message: types.Message, state: FSMContext):
     file_path = file_info.file_path
     file_url = f'https://api.telegram.org/file/bot{bot.token}/{file_path}'
     logging.info(f"File URL: {file_url}")
-
-    # Скачайте файл
     file_data = requests.get(file_url).content
 
-    # Извлеките текст из PDF
     try:
         with pdfplumber.open(io.BytesIO(file_data)) as pdf:
             document_text = ''.join([page.extract_text() for page in pdf.pages])
@@ -77,10 +74,7 @@ async def handle_document_upload(message: types.Message, state: FSMContext):
         logging.error(f"Error during PDF processing: {e}")
         return
 
-    # Отправьте текст в API для суммаризации (заглушка, замените на реальный API)
     summary = generate_summary(document_text)
-
-    # Сохраните результат в контексте FSM
     await state.update_data(document_summary=summary)
     await message.reply(f"Document summarized: {summary}")
     await state.set_state(DocumentState.document_uploaded)

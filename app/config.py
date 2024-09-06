@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 import redis.asyncio as redis
 import os
 
-# Загрузка переменных окружения из файла .env
+
 load_dotenv()
 
 

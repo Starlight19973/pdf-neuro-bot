@@ -1,14 +1,14 @@
 import asyncio
-from bot_init import dp, bot  # Импортируем диспетчер и бота из bot_init.py
-from bot.handlers import router  # Импортируем router из handlers.py
+from bot_init import dp, bot
+from bot.handlers import router
 import logging
 
-# Настройка логирования
+
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 logger.info("Bot is starting...")
 
-# Подключаем router к диспетчеру
+
 dp.include_router(router)
 
 
